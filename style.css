@@ -1,0 +1,82 @@
+/* Make Mermaid diagrams scale to their container width automatically,
+   preserving aspect ratio, instead of requiring per-block {scale: X}. */
+.slidev-layout .mermaid {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.slidev-layout .mermaid > svg {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+}
+
+.slidev-layout .term[data-zh] {
+  --term-tip-gap: 14px;
+  --term-tip-arrow-width: 16px;
+  --term-tip-arrow-height: 8px;
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+  cursor: help;
+  border-radius: 0.28rem;
+  padding-inline: 0.08em;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.slidev-layout .term[data-zh]::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + var(--term-tip-gap) - var(--term-tip-arrow-height) + 1px);
+  width: var(--term-tip-arrow-width);
+  height: var(--term-tip-arrow-height);
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+  transform: translateX(-50%) translateY(8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease, transform 160ms ease;
+  z-index: 79;
+}
+
+.slidev-layout .term[data-zh]::after {
+  content: attr(data-zh);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + var(--term-tip-gap));
+  min-width: max-content;
+  max-width: min(18rem, 70vw);
+  padding: 0.42rem 0.65rem;
+  border-radius: 0.7rem;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #f8fafc;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+  text-align: center;
+  white-space: nowrap;
+  box-shadow: 0 18px 42px -14px rgba(15, 23, 42, 0.7);
+  transform: translate(-50%, 8px) scale(0.96);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease, transform 160ms ease;
+  z-index: 80;
+}
+
+.slidev-layout .term[data-zh]:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.slidev-layout .term[data-zh]:hover::after {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+}
+
+.slidev-layout .term[data-zh]:hover {
+  background: rgba(59, 130, 246, 0.1);
+  color: #1d4ed8;
+}
