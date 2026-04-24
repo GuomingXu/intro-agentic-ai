@@ -115,6 +115,18 @@ layout: section
 
 ## AI 是什么：从神经网络说起
 
+<div class="mt-6 pb-12 flex justify-center">
+  <video
+    src="/images/Walk%20In%20The%20Clouds.mp4"
+    controls
+    autoplay
+    muted
+    loop
+    playsinline
+    class="w-[760px] max-h-[320px] rounded border border-white/20 object-contain"
+  ></video>
+</div>
+
 ---
 
 # AI 不是一个"东西"，是一类方法
@@ -347,6 +359,157 @@ x：输入信号，w：权重，b：偏置，y：输出结果
 💡 一个现代大模型，这样的参数有 <b>几十亿到上万亿个</b>——量变带来质变。
 </div>
 
+</div>
+
+---
+
+# 深度学习到底在「学」什么？
+
+<style>
+@keyframes dl-reward {
+  0%, 100% { opacity: 0.45; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-4px); }
+}
+.dl-train-step {
+  min-height: 64px;
+  border: 1px solid rgba(79, 70, 229, 0.22);
+  background: rgba(79, 70, 229, 0.08);
+}
+.dl-step-title,
+.dl-step-desc {
+  white-space: nowrap;
+}
+.dl-step-desc {
+  font-size: 10.5px;
+  line-height: 1.15;
+  opacity: 0.66;
+}
+.dl-reward {
+  animation: dl-reward 1.6s ease-in-out infinite;
+}
+</style>
+
+<div class="text-sm opacity-75 -mt-1">
+训练不是把答案「写进模型」，而是把目标变成分数，再反复微调参数。
+</div>
+
+<div class="grid grid-cols-[1.28fr_0.92fr] gap-5 pt-3">
+
+<div class="rounded border border-slate-300/35 bg-slate-500/5 p-3">
+
+<div class="grid grid-cols-[1fr_18px_1fr_18px_1fr_18px_1fr] items-center gap-2 text-center">
+  <div class="dl-train-step rounded px-2 flex flex-col items-center justify-center">
+    <div class="dl-step-title flex items-center justify-center gap-1.5"><span>📦</span><b>样本</b></div>
+    <div class="dl-step-desc pt-1">训练数据</div>
+  </div>
+  <div class="flex items-center justify-center text-slate-400">→</div>
+  <div class="dl-train-step rounded px-2 flex flex-col items-center justify-center">
+    <div class="dl-step-title flex items-center justify-center gap-1.5"><span>🧠</span><b>预测</b></div>
+    <div class="dl-step-desc pt-1">模型输出</div>
+  </div>
+  <div class="flex items-center justify-center text-slate-400">→</div>
+  <div class="dl-train-step rounded px-2 flex flex-col items-center justify-center">
+    <div class="dl-step-title flex items-center justify-center gap-1.5"><span>📏</span><b>评分</b></div>
+    <div class="dl-step-desc pt-1">误差/奖励</div>
+  </div>
+  <div class="flex items-center justify-center text-slate-400">→</div>
+  <div class="dl-train-step rounded px-2 flex flex-col items-center justify-center">
+    <div class="dl-step-title flex items-center justify-center gap-1.5"><span>🔧</span><b>更新</b></div>
+    <div class="dl-step-desc pt-1">调参数</div>
+  </div>
+</div>
+
+<div class="pt-3">
+  <GradientDescent3D />
+</div>
+
+</div>
+
+<div class="space-y-2.5">
+
+<div class="rounded border border-blue-400/30 bg-blue-500/10 p-3">
+  <div class="font-bold text-[17px]">损失函数：错多少</div>
+  <div class="text-xs opacity-75 pt-1">有标准答案时，用它衡量预测和答案的差距。</div>
+  <div class="pt-2 text-xs opacity-65">目标：让损失变小。</div>
+</div>
+
+<div class="rounded border border-amber-400/30 bg-amber-500/10 p-3">
+  <div class="font-bold text-[17px]">奖励函数：做得多好</div>
+  <div class="text-xs opacity-75 pt-1">决策任务里，奖励先转成训练信号，再更新策略或模型参数。</div>
+  <div class="dl-reward pt-2 text-xs text-amber-700">+1 有帮助 · -1 答非所问 · +10 完成任务</div>
+</div>
+
+<div class="rounded border border-purple-400/30 bg-purple-500/10 p-3">
+  <div class="font-bold text-[17px]">反向传播：责任怎么分</div>
+  <div class="text-xs opacity-75 pt-1">把这次错误分摊回每一层、每个参数，告诉它们该往哪边调。</div>
+</div>
+
+</div>
+
+</div>
+
+<div class="pt-3 text-sm opacity-75">
+一句话：深度学习把「目标」变成可计算的分数，再把海量参数调到更接近目标的位置。
+</div>
+
+---
+
+# 从生物神经元到人工神经网络
+
+<div class="grid grid-cols-2 gap-5 pt-1 text-sm">
+
+<div class="bridge-card rounded-xl p-4">
+
+### 🧠 人类神经元与大脑
+
+<div class="bridge-copy opacity-80 pt-1">
+神经元接收来自其他神经元的电化学信号。信号足够强时，神经元会被激活，并把信号继续传给下游神经元。
+</div>
+
+<div class="bridge-flow pt-3">
+  <div class="bridge-step bio"><b>1. 感官输入</b><span class="opacity-65">图像、声音、触觉</span></div>
+  <div class="bridge-step bio"><b>2. 神经元放电</b><span class="opacity-65">信号超过阈值</span></div>
+  <div class="bridge-step bio"><b>3. 回路协作</b><span class="opacity-65">多个脑区参与</span></div>
+  <div class="bridge-step bio"><b>4. 行为判断</b><span class="opacity-65">识别、决策、记忆</span></div>
+</div>
+
+<div class="pt-3 font-bold">学习过程</div>
+<ul class="bridge-list pl-5 list-disc opacity-85">
+  <li>反复经历同类输入，相关神经回路更容易被激活。</li>
+  <li>反馈会改变神经元之间的连接强度，也就是「突触可塑性」。</li>
+  <li>练习越多，某些判断或动作越稳定，最终形成记忆和技能。</li>
+</ul>
+
+</div>
+
+<div class="bridge-card rounded-xl p-4">
+
+### ⚙️ 人工神经元与深度神经网络
+
+<div class="bridge-copy opacity-80 pt-1">
+人工神经元把输入数字乘以权重，再加总、加偏置、过激活函数，得到一个输出。很多层叠起来，就是深度神经网络。
+</div>
+
+<div class="bridge-flow pt-3">
+  <div class="bridge-step ai"><b>1. 数据输入</b><span class="opacity-65">像素、文本、特征</span></div>
+  <div class="bridge-step ai"><b>2. 加权求和</b><span class="opacity-65">Σwᵢxᵢ + b</span></div>
+  <div class="bridge-step ai"><b>3. 多层传递</b><span class="opacity-65">提取抽象特征</span></div>
+  <div class="bridge-step ai"><b>4. 输出预测</b><span class="opacity-65">分类、文本、动作</span></div>
+</div>
+
+<div class="pt-3 font-bold">训练过程</div>
+<ul class="bridge-list pl-5 list-disc opacity-85">
+  <li>先让模型对训练样本做预测，再计算预测和答案之间的误差。</li>
+  <li>误差通过反向传播分摊到每个参数上。</li>
+  <li>梯度下降把权重稍微调小或调大，重复很多轮后，错误逐步变小。</li>
+</ul>
+
+</div>
+
+</div>
+
+<div class="bridge-note mt-2 pl-3 text-xs opacity-75">
+这个类比只帮助建立直觉：人脑是生物系统，人工神经网络是数学函数；相似点在于「大量简单单元 + 可调整连接 + 反复反馈学习」。
 </div>
 
 ---
