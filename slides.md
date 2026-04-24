@@ -2186,6 +2186,14 @@ flowchart LR
 </div>
 </div>
 
+<div class="p-4 rounded bg-blue-500 bg-opacity-10 col-span-2 border-l-4 border-blue-500">
+<div class="font-bold pb-1">⑤ 该慢的地方，就要慢下来</div>
+<div class="opacity-80">
+不是所有环节都要"一键自动"。关键判断——定方向、定调性、定服务标准——必须保留人的<b>摩擦</b>。<br/>
+那份"想清楚"的成本省不掉，也不该省。<b>AI 跑得越快，越需要人在关键节点按下慢放</b>。
+</div>
+</div>
+
 </div>
 
 <div class="pt-6 text-center text-sm">
@@ -2364,6 +2372,49 @@ layout: section
 
 <div class="mt-4 p-3 rounded bg-gray-500 bg-opacity-10 text-xs text-center">
 <b>每一 phase 的评估标准不同</b>：早期看"顾问采纳率"，中期看"单顾问服务量"，后期看"自动化比例 + 用户满意度"。
+</div>
+
+---
+
+# 失败的两种形态——第二种才是真麻烦
+
+<div class="pt-2 text-sm opacity-80">
+AI 出错分两种。我们的注意力天然盯着前者，但真正会吃亏的是后者。
+</div>
+
+<div class="grid grid-cols-2 gap-6 pt-5 text-sm">
+
+<div class="p-4 rounded border border-yellow-500 border-opacity-40 bg-yellow-500 bg-opacity-5">
+<div class="font-bold">⚠️ 显式错误：看得见的翻车</div>
+<div class="opacity-80 pt-2">
+• 胡编乱造、引用失真、工具报错<br/>
+• 发错消息、搞错身份、格式崩坏
+</div>
+<div class="pt-3 text-xs opacity-70">
+特点：<b>一发生就知道</b>，容易定位、容易修。<br/>
+多数"红线/底线"机制都是在防它。
+</div>
+</div>
+
+<div class="p-4 rounded border border-red-500 border-opacity-40 bg-red-500 bg-opacity-5">
+<div class="font-bold">🩸 无声退化：没人察觉的慢性病</div>
+<div class="opacity-80 pt-2">
+• 每条回复"看起来都合理"，但整体在偏<br/>
+• 话术越写越长、越写越像模板<br/>
+• 用户画像被逐步带偏，反馈循环失效
+</div>
+<div class="pt-3 text-xs opacity-70">
+特点：<b>单点看不出，累积才致命</b>。<br/>
+没有评估机制，就根本看不到。
+</div>
+</div>
+
+</div>
+
+<div class="pt-5 text-center text-sm">
+<b>为什么 AI 特别容易"无声退化"？</b><br/>
+<span class="opacity-80">它不会"痛"——人会因为尴尬、投诉、返工而自我修正，AI 不会。<br/>
+你不主动度量，它就会一遍遍犯同样的错，而且越犯越自信。</span>
 </div>
 
 ---
