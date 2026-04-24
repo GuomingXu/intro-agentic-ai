@@ -4,6 +4,8 @@
 
 [在线演示](https://intro-agentic-ai.lishun.me)
 
+[演讲录像](https://www.bilibili.com/video/BV1v6o5BrEiT/)
+
 ## 运行
 
 ```bash
