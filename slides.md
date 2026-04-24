@@ -221,6 +221,9 @@ def 是不是猫(图):
   font-size: 12px !important;
   font-weight: 700;
 }
+.nn-diagram .nn-label {
+  font-size: 7.5px !important;
+}
 </style>
 
 <div class="grid grid-cols-2 gap-8 pt-1">
@@ -233,32 +236,41 @@ def 是不是猫(图):
 <div class="flex justify-center py-2">
 <svg viewBox="0 0 320 140" class="nn-diagram w-4/5">
   <defs>
-    <marker id="nn-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <marker id="nn-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto">
       <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
     </marker>
   </defs>
-  <line x1="42" y1="30"  x2="158" y2="70" stroke="#94a3b8" stroke-width="1.2"/>
-  <line x1="42" y1="70"  x2="158" y2="70" stroke="#94a3b8" stroke-width="1.2"/>
-  <line x1="42" y1="110" x2="158" y2="70" stroke="#94a3b8" stroke-width="1.2"/>
+  <line x1="40.5" y1="33.3"  x2="141.8" y2="64.9" stroke="#94a3b8" stroke-width="1.2"/>
+  <line x1="41" y1="70"  x2="141" y2="70" stroke="#94a3b8" stroke-width="1.2"/>
+  <line x1="40.5" y1="106.7" x2="141.8" y2="75.1" stroke="#94a3b8" stroke-width="1.2"/>
+  <line x1="123.7" y1="28" x2="147.2" y2="56.8" stroke="#94a3b8" stroke-width="1.2"/>
   <circle cx="30" cy="30"  r="11" fill="#3b82f6"/>
   <circle cx="30" cy="70"  r="11" fill="#3b82f6"/>
   <circle cx="30" cy="110" r="11" fill="#3b82f6"/>
+  <circle cx="118" cy="21" r="9" fill="#64748b"/>
   <text x="14" y="33"  font-size="9" fill="#94a3b8" text-anchor="end">x₁</text>
   <text x="14" y="73"  font-size="9" fill="#94a3b8" text-anchor="end">x₂</text>
   <text x="14" y="113" font-size="9" fill="#94a3b8" text-anchor="end">x₃</text>
+  <text x="118" y="24" font-size="9" fill="white" text-anchor="middle" font-weight="bold">b</text>
   <text class="nn-weight" x="95" y="46" font-size="10" fill="#a78bfa">w₁</text>
   <text class="nn-weight" x="95" y="66" font-size="10" fill="#a78bfa">w₂</text>
   <text class="nn-weight" x="95" y="96" font-size="10" fill="#a78bfa">w₃</text>
-  <circle cx="175" cy="70" r="18" fill="#a855f7"/>
-  <text class="nn-sum" x="175" y="74" text-anchor="middle" font-size="12" fill="white" font-weight="bold">Σ</text>
-  <line x1="193" y1="70" x2="268" y2="70" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#nn-arrow)"/>
-  <circle cx="285" cy="70" r="11" fill="#10b981"/>
-  <text x="302" y="73" font-size="9" fill="#94a3b8">y</text>
+  <circle cx="158" cy="70" r="17" fill="#a855f7"/>
+  <text class="nn-sum" x="158" y="74" text-anchor="middle" font-size="12" fill="white" font-weight="bold">Σ</text>
+  <text class="nn-label" x="158" y="101" text-anchor="middle" fill="#94a3b8">求和</text>
+  <line x1="175" y1="70" x2="215" y2="70" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#nn-arrow)"/>
+  <circle cx="232" cy="70" r="17" fill="#f97316"/>
+  <text class="nn-sum" x="232" y="74" text-anchor="middle" font-size="12" fill="white" font-weight="bold">f</text>
+  <text class="nn-label" x="232" y="101" text-anchor="middle" fill="#94a3b8">激活</text>
+  <line x1="249" y1="70" x2="279" y2="70" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#nn-arrow)"/>
+  <circle cx="290" cy="70" r="11" fill="#10b981"/>
+  <text x="306" y="73" font-size="9" fill="#94a3b8">y</text>
 </svg>
 </div>
 
 <div class="text-xs opacity-70 text-center -mt-1">
-一个神经元 = 加权求和 → 激活 → 输出
+一个神经元 = 加权求和 → 激活 → 输出，写成公式就是 y = f(Σwᵢxᵢ + b)<br/>
+x：输入信号，w：权重，b：偏置，y：输出结果
 </div>
 
 </div>
@@ -347,7 +359,7 @@ def 是不是猫(图):
 <img src="/images/slide-07-data.png" alt="海量互联网数据流入数据仓库" class="w-full rounded-lg mb-3 border border-white border-opacity-70 shadow-sm" style="aspect-ratio: 4 / 3; object-fit: cover;" />
 <div class="font-bold text-lg">📊 数据</div>
 <div class="text-sm opacity-80 pt-2">
-互联网带来**前所未有的数据量**：图片、文本、视频。
+互联网带来<b>前所未有的数据量</b>：图片、文本、视频。
 </div>
 <div class="text-xs opacity-60 pt-2">
 <span class="term" data-zh="图像数据集">ImageNet</span> (2009) · 1400 万张标注图
@@ -358,7 +370,7 @@ def 是不是猫(图):
 <img src="/images/slide-07-compute.png" alt="GPU 和服务器提供并行算力" class="w-full rounded-lg mb-3 border border-white border-opacity-70 shadow-sm" style="aspect-ratio: 4 / 3; object-fit: cover;" />
 <div class="font-bold text-lg">⚡ 算力</div>
 <div class="text-sm opacity-80 pt-2">
-<span class="term" data-zh="图形处理器">GPU</span>（原本用来打游戏的）**恰好**非常适合训练神经网络。
+<span class="term" data-zh="图形处理器">GPU</span>（原本用来打游戏的）<b>恰好</b>非常适合训练神经网络。
 </div>
 <div class="text-xs opacity-60 pt-2">
 一块 <span class="term" data-zh="图形处理器">GPU</span> ≈ 一屋子 <span class="term" data-zh="中央处理器">CPU</span>
@@ -369,7 +381,7 @@ def 是不是猫(图):
 <img src="/images/slide-07-algorithm.png" alt="多层神经网络和训练技巧的抽象示意" class="w-full rounded-lg mb-3 border border-white border-opacity-70 shadow-sm" style="aspect-ratio: 4 / 3; object-fit: cover;" />
 <div class="font-bold text-lg">🧠 算法</div>
 <div class="text-sm opacity-80 pt-2">
-更深的网络（**深度学习**）+ 更聪明的训练技巧。
+更深的网络（<b>深度学习</b>）+ 更聪明的训练技巧。
 </div>
 <div class="text-xs opacity-60 pt-2">
 2012 <span class="term" data-zh="卷积神经网络模型">AlexNet</span> · 图像识别超过人类
