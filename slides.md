@@ -282,15 +282,15 @@ def 是不是猫(图):
 
 <div class="text-xs opacity-70 text-center -mt-1">
 一个神经元 = 加权求和 → 激活 → 输出，写成公式就是 y = f(Σwᵢxᵢ + b)<br/>
-x：输入信号，w：权重，b：偏置，y：输出结果
+大白话：几个信号进来，各自按"重要性"打折相加，<b>超过门槛就开火</b>。
 </div>
 
 </div>
 
 <div>
 
-### 串成"网络"
-千万个这样的"小神经元"连在一起，每条线上都是一个<b>可调节的参数</b>。
+### 串成"网络"：每一层抽象一点
+千万个神经元分层堆起来，每条线是一个<b>可调节的参数</b>。<br/>
 
 <div class="flex justify-center py-1">
 <svg viewBox="0 0 300 175" class="nn-diagram w-full max-w-sm">
@@ -356,14 +356,15 @@ x：输入信号，w：权重，b：偏置，y：输出结果
 </div>
 
 <div class="p-3 rounded bg-blue-500 bg-opacity-10">
-💡 一个现代大模型，这样的参数有 <b>几十亿到上万亿个</b>——量变带来质变。
+💡 一个现代大模型的参数有 <b>几十亿到上万亿个</b>。<br/>
+<span class="opacity-75 text-xs">打个比方：相当于给它<b>上万亿个可调旋钮</b>，训练就是把每个旋钮一点点拧到位——量变带来质变。</span>
 </div>
 
 </div>
 
 ---
 
-# 深度学习到底在「学」什么？
+# 深度学习到底是怎么学的？
 
 <style>
 @keyframes dl-reward {
@@ -399,28 +400,32 @@ x：输入信号，w：权重，b：偏置，y：输出结果
 
 <div class="grid grid-cols-[1fr_18px_1fr_18px_1fr_18px_1fr] items-center gap-2 text-center">
   <div class="dl-train-step rounded px-2 flex flex-col items-center justify-center">
-    <div class="dl-step-title flex items-center justify-center gap-1.5"><span>📦</span><b>样本</b></div>
-    <div class="dl-step-desc pt-1">训练数据</div>
+    <div class="dl-step-title flex items-center justify-center gap-1.5"><span>📦</span><b>喂一批</b></div>
+    <div class="dl-step-desc pt-1">样本进模型</div>
   </div>
   <div class="flex items-center justify-center text-slate-400">→</div>
   <div class="dl-train-step rounded px-2 flex flex-col items-center justify-center">
-    <div class="dl-step-title flex items-center justify-center gap-1.5"><span>🧠</span><b>预测</b></div>
-    <div class="dl-step-desc pt-1">模型输出</div>
+    <div class="dl-step-title flex items-center justify-center gap-1.5"><span>🧠</span><b>它猜</b></div>
+    <div class="dl-step-desc pt-1">给出预测</div>
   </div>
   <div class="flex items-center justify-center text-slate-400">→</div>
   <div class="dl-train-step rounded px-2 flex flex-col items-center justify-center">
-    <div class="dl-step-title flex items-center justify-center gap-1.5"><span>📏</span><b>评分</b></div>
-    <div class="dl-step-desc pt-1">误差/奖励</div>
+    <div class="dl-step-title flex items-center justify-center gap-1.5"><span>📏</span><b>看错多少</b></div>
+    <div class="dl-step-desc pt-1">算误差/奖励</div>
   </div>
   <div class="flex items-center justify-center text-slate-400">→</div>
   <div class="dl-train-step rounded px-2 flex flex-col items-center justify-center">
-    <div class="dl-step-title flex items-center justify-center gap-1.5"><span>🔧</span><b>更新</b></div>
-    <div class="dl-step-desc pt-1">调参数</div>
+    <div class="dl-step-title flex items-center justify-center gap-1.5"><span>🔧</span><b>拧旋钮</b></div>
+    <div class="dl-step-desc pt-1">微调参数</div>
   </div>
 </div>
 
 <div class="pt-3">
   <GradientDescent3D />
+</div>
+
+<div class="text-xs opacity-70 text-center pt-1">
+曲面高度 = 这次错得多严重；小球在摸索"下山路"，<b>最低点</b>就是训练的目标。
 </div>
 
 </div>
@@ -429,13 +434,13 @@ x：输入信号，w：权重，b：偏置，y：输出结果
 
 <div class="rounded border border-blue-400/30 bg-blue-500/10 p-3">
   <div class="font-bold text-[17px]">损失函数：错多少</div>
-  <div class="text-xs opacity-75 pt-1">有标准答案时，用它衡量预测和答案的差距。</div>
+  <div class="text-xs opacity-75 pt-1"><b>有标准答案时用</b>——比如"这是猫还是狗"。衡量预测和答案的差距。</div>
   <div class="pt-2 text-xs opacity-65">目标：让损失变小。</div>
 </div>
 
 <div class="rounded border border-amber-400/30 bg-amber-500/10 p-3">
   <div class="font-bold text-[17px]">奖励函数：做得多好</div>
-  <div class="text-xs opacity-75 pt-1">决策任务里，奖励先转成训练信号，再更新策略或模型参数。</div>
+  <div class="text-xs opacity-75 pt-1"><b>没标准答案、只能看表现时用</b>——比如下棋、写作、操作电脑。做对加分、做错扣分，模型朝"拿更多分"的方向微调。</div>
   <div class="dl-reward pt-2 text-xs text-amber-700">+1 有帮助 · -1 答非所问 · +10 完成任务</div>
 </div>
 
@@ -449,7 +454,7 @@ x：输入信号，w：权重，b：偏置，y：输出结果
 </div>
 
 <div class="pt-3 text-sm opacity-75">
-一句话：深度学习把「目标」变成可计算的分数，再把海量参数调到更接近目标的位置。
+所以模型不是被"教"出来的，是被<b>上亿次错题反馈</b>磨出来的——目标变成分数，参数一点点往"更接近目标"的方向拧。
 </div>
 
 ---
